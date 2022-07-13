@@ -1,19 +1,21 @@
+/*
+In Express, words with a colon in front of them in the url are treated as variables. You can access the value of each variable through `req.params`.
+
+
+*/
+
 const express = require('express');
 const app = express();
 
 
-const mockUserData=[
-    {name:'Mark'},
-    {name:'Jill'}
-]
-
 app.get(
-    '/users',
+    '/users/:id',
     (req, res) => {
+        console.log(req.params.id);
         res.json(
             {success: true,
-             message: 'successfully got users. Nice!',
-             users: mockUserData}
+             message: 'got one user',
+             users: req.params.id}
         )
     }
 )
